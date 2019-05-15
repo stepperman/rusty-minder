@@ -1,0 +1,15 @@
+[package]
+name = "discord_bot"
+version = "0.1.0"
+authors = ["antonio-bottelier <antonio@talespin.company>"]
+edition = "2018"
+
+[dependencies]
+
+serenity = "0.6.0-rc.0"
+http = "0.1.17"
+serde = "1.0.91"
+serde_xml = "0.9.1"
+serde_json = "1.0.39"
+chrono = "0.4.6"
+reqwest = "0.9.16"
