@@ -9,20 +9,20 @@ pub struct AnilistResult {
     #[serde(rename = "startDate")]
     pub first_air : Date,
 
-    #[serde(rename = "nextAiringEpisode", default = None)]
+    #[serde(rename = "nextAiringEpisode")]
     pub next_air : Option<NextEpisode>,
     pub genres : Vec<String>
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AnilistTitle {
-    #[derive(rename = "english")]
+    #[serde (rename = "english")]
     pub english_name : Option<String>,
 
-    #[derive(rename = "romaji")]
+    #[serde (rename = "romaji")]
     pub romaji_name : Option<String>,
 
-    #[derive(rename = "native")]
+    #[serde (rename = "native")]
     pub native_name : Option<String>,
 }
 

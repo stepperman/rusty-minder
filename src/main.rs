@@ -1,12 +1,19 @@
 mod commands;
 mod anilist;
+mod bot;
+mod nyaa;
 
 use std::io::BufRead;
+use bot::Bot;
 
 fn main() {
-    let result = anilist::searching::search(String::from("Attack on Titan"));    
 
-    println!("{:?}", result);
+    
+
+    return;
+    let config = get_conf();
+
+    Bot::new(config);
 }
 
 fn get_conf() -> Config {
@@ -33,7 +40,7 @@ fn request_token() -> String {
     token
 }
 
-struct Config {
+#[derive(Clone)]
+pub struct Config {
     token : String,
-
 }
