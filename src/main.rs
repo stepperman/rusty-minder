@@ -1,3 +1,5 @@
+#[macro_use] extern crate serde_derive;
+
 mod commands;
 mod anilist;
 mod bot;
@@ -8,8 +10,8 @@ use bot::Bot;
 
 fn main() {
 
-    
-
+    let feed = nyaa::feed::fetch().expect("WHAT THE FUCK DUDE."); 
+    println!("{:#?}", feed.feed());
     return;
     let config = get_conf();
 
