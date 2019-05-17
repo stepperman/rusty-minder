@@ -1,4 +1,3 @@
-
 use reqwest::{Client, Request};
 use serde::de::Deserialize;
 use std::error::Error;
@@ -45,7 +44,7 @@ pub fn fetch() -> Result<Feed, Box<dyn Error>> {
 }
 
 fn fetch_feed() -> Result<String, Box<dyn Error>> {
-    let client = reqwest::Client::new();
+    let client = Client::new();
     let mut response = client.get(&link[..]).send()?;
 
     let text = response.text()?;

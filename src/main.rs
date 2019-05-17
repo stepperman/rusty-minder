@@ -4,6 +4,7 @@ mod commands;
 mod anilist;
 mod bot;
 mod nyaa;
+mod response_module;
 
 use std::io::BufRead;
 use bot::Bot;
