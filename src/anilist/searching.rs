@@ -27,6 +27,24 @@ pub struct AnilistTitle {
     pub native_name : Option<String>,
 }
 
+impl AnilistTitle {
+    pub fn get_title(&self) -> String {
+        if let Some(english) = &self.english_name {
+            return String::clone(&english);
+        };
+
+        if let Some(romaji) = &self.romaji_name {
+            return String::clone(&romaji);
+        }
+
+        if let Some(native_name) = &self.native_name {
+            return String::clone(&native_name);
+        }
+
+        return String::from("Something went wrong with the title!");
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct NextEpisode {
     pub episode : u16,
@@ -60,8 +78,6 @@ struct All {
 
 pub fn search(search_query:String) -> Result<Vec<AnilistResult>, ()> {
     let result = search_raw(search_query)?;
-
-    println!("{:?}", result);
 
     let parsed : serde_json::Result<All> = serde_json::from_str(&result);
     let parsed : All = match parsed {

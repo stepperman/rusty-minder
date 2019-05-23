@@ -10,13 +10,7 @@ use std::io::BufRead;
 use bot::Bot;
 
 fn main() {
-
-    let feed = nyaa::feed::fetch().expect("WHAT THE FUCK DUDE."); 
-    println!("{:#?}", feed.feed());
-    return;
-    let config = get_conf();
-
-    Bot::new(config);
+    Bot::new(get_conf());
 }
 
 fn get_conf() -> Config {
