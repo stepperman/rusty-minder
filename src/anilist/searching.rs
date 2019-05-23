@@ -1,3 +1,4 @@
+use std::error::Error;
 use chrono::{DateTime, Utc};
 use reqwest::{Client, Request, Response};
 use serde::*;
@@ -62,7 +63,11 @@ pub fn search(search_query:String) -> Result<Vec<AnilistResult>, ()> {
 
     println!("{:?}", result);
 
-    let parsed : All = serde_json::from_str(&result).expect("FUCK!");
+    let parsed : serde_json::Result<All> = serde_json::from_str(&result);
+    let parsed : All = match parsed {
+        Ok(o) => o,
+        _ => return Err(())
+    };
 
     Ok(parsed.data.page.media)
 }
